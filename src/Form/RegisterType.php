@@ -31,8 +31,6 @@ class RegisterType extends AbstractType
                     new Length([
                         'min' => 2,
                         'max' => 50,
-                        'minMessage' => 'Votre pseudo doit posséder au minimum 2 caractères',
-                        'maxMessage' => 'Votre pseudo doit posséder au maximum 50 caractères',
                     ]),
                     new NotBlank()
                 ],
