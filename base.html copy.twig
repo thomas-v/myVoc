@@ -1,0 +1,175 @@
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RTV - {% block title %}{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- css of file -->
+    <link href="{{ asset('assets/css/base.css') }}" rel="stylesheet">
+    
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('assets/css/dashboard.css') }}" rel="stylesheet">
+  </head>
+  <body>
+    
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">RTV - REVISE TON VOCABULAIRE</a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    </header>
+
+    <div class="container-fluid">
+    <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="position-sticky pt-3">
+                {% if app.user %}
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#">
+                                <ion-icon name="home-outline"></ion-icon>
+                                Accueil
+                            </a>
+                        </li>
+                    </ul>
+                {% endif %}
+                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                    <span>Mon compte</span>
+                    <a class="link-secondary" href="#" aria-label="Add a new report">
+                        <ion-icon name="person-outline"></ion-icon>
+                    </a>
+                </h6>
+                <ul class="nav flex-column">
+                    {% if app.user %}
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{{ path('app_logout') }}">
+                                <ion-icon name="log-out-outline"></ion-icon>
+                                Déconnexion
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{{ path('app_login') }}">
+                                <ion-icon name="log-in-outline"></ion-icon>
+                                Connexion
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{{ path('register') }}">
+                                <ion-icon name="person-add-outline"></ion-icon>
+                                Inscription
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+
+                {% if app.user %}
+                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>Mes langues</span>
+                        <a class="link-secondary" href="#" aria-label="Add a new report">
+                            <ion-icon name="language-outline"></ion-icon>
+                        </a>
+                    </h6>
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <ion-icon name="add-outline"></ion-icon>
+                                Ajout
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <ion-icon name="pencil-outline"></ion-icon>
+                                Modification
+                            </a>
+                        </li>
+                    </ul>
+
+                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>Mes mots</span>
+                        <a class="link-secondary" href="#" aria-label="Add a new report">
+                            <ion-icon name="library-outline"></ion-icon>
+                        </a>
+                    </h6>
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <ion-icon name="list-outline"></ion-icon>
+                                Liste
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <ion-icon name="search-outline"></ion-icon>
+                                Recherche
+                            </a>
+                        </li>
+                    </ul>
+
+                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                    <span>Révisions de mots</span>
+                    <a class="link-secondary" href="#" aria-label="Add a new report">
+                        <ion-icon name="school-outline"></ion-icon>
+                    </a>
+                    </h6>
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <ion-icon name="shuffle-outline"></ion-icon>
+                                Random
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <ion-icon name="barbell-outline"></ion-icon>
+                                Non maitrisés
+                            </a>
+                        </li>
+                    </ul>
+
+                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>Nouveaux mots</span>
+                        <a class="link-secondary" href="#" aria-label="Add a new report">
+                            <ion-icon name="add-circle-outline"></ion-icon>
+                        </a>
+                    </h6>
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <ion-icon name="add-outline"></ion-icon>
+                                Ajout
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <ion-icon name="pencil-outline"></ion-icon>
+                                Modification
+                            </a>
+                        </li>
+                    </ul>
+                {% endif %}
+            </div>
+        </nav>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <br>
+                    {% block content %}
+                    
+                    {% endblock %}
+                </div>
+            </div>
+        </main>
+    </div>
+    </div>
+
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}" ></script>
+    
+  </body>
+</html>
