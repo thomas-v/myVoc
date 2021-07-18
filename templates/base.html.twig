@@ -30,7 +30,7 @@
                 {% if app.user %}
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">
+                            <a class="nav-link" aria-current="page" href="{{ path('home') }}">
                                 <ion-icon name="home-outline"></ion-icon>
                                 Accueil
                             </a>
@@ -49,6 +49,12 @@
                             <a class="nav-link" aria-current="page" href="{{ path('app_logout') }}">
                                 <ion-icon name="log-out-outline"></ion-icon>
                                 Déconnexion
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{{ path('account_password') }}">
+                                <ion-icon name="person-circle-outline"></ion-icon>
+                                Modifier mon mot de passe
                             </a>
                         </li>
                     {% else %}
