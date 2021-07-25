@@ -52,4 +52,20 @@ class LanguageController extends AbstractController
             'languages' => $languageRepository->findAll()
         ]);
     }
+
+    #[Route('/langues/supprimer/{id}', name: 'language-delete', methods : ['get'])]
+    public function delete(LanguageRepository $languageRepository, int $id): Response
+    {
+        $notification = null;
+        $language = $languageRepository->find($id);
+        $this->entityManager->remove($language);
+        $this->entityManager->flush();
+
+        $notification = [
+            'message' => 'La langue a bien été supprimé.',
+            'type' => 'success'
+        ];
+
+        return $this->redirectToRoute('language-manager'); 
+    }
 }

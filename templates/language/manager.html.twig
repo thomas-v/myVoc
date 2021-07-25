@@ -13,7 +13,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ language.name }}</h5>
                         <a href="#" class="btn btn-primary" style="width:100%">Modifier</a><br>
-                        <a href="#" class="btn btn-danger mt-1" style="width:100%">Supprimer</a>
+                        <a href="{{ path('language-delete', {id : language.id}) }}" class="btn btn-danger mt-1" style="width:100%">Supprimer</a>
                     </div>
                 </div>
             </div>
