@@ -36,11 +36,6 @@ class LanguageController extends AbstractController
                 'message' => 'La langue a bien été ajouté.',
                 'type' => 'success'
             ];
-        } else {
-            $notification = [
-                'message' => 'La langue n\'a pas été ajoutée',
-                'type' => 'danger'
-            ];
         }
 
         return $this->render('language/add.html.twig', [
