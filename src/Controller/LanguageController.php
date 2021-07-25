@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Language;
+use App\Repository\LanguageRepository;
 use App\Form\LanguageType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -41,6 +42,14 @@ class LanguageController extends AbstractController
         return $this->render('language/add.html.twig', [
             'form' => $form->createView(),
             'notification' => $notification
+        ]);
+    }
+
+    #[Route('/langues/gestion', name: 'language-manager')]
+    public function manager(LanguageRepository $languageRepository): Response
+    {
+        return $this->render('language/manager.html.twig', [
+            'languages' => $languageRepository->findAll()
         ]);
     }
 }
