@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MoAjouter une nouvelle langue{% endblock %}
+
+{% block content %}
+    <h1>Ajouter une langue</h1>
+    <hr>
+    {% if notification %}
+        <div class="alert alert-{{ notification.type }}">{{notification.message}}</div>
+    {% endif %}
+    {{form(form)}}
+{% endblock %}
