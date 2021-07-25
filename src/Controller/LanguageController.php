@@ -53,7 +53,7 @@ class LanguageController extends AbstractController
         ]);
     }
 
-    #[Route('/langues/supprimer/{id}', name: 'language-delete', methods : ['get'])]
+    #[Route('/langues/supprimer-une-langue/{id}', name: 'language-delete', methods : ['get'])]
     public function delete(LanguageRepository $languageRepository, int $id): Response
     {
         $notification = null;
@@ -61,11 +61,28 @@ class LanguageController extends AbstractController
         $this->entityManager->remove($language);
         $this->entityManager->flush();
 
-        $notification = [
-            'message' => 'La langue a bien été supprimé.',
-            'type' => 'success'
-        ];
-
         return $this->redirectToRoute('language-manager'); 
+    }
+
+    #[Route('/langues/modifier-une-langue/{id}', name: 'language-update', methods : ['get', 'post'])]
+    public function update(Request $request, LanguageRepository $languageRepository, int $id): Response
+    {
+        $language = $languageRepository->find($id);
+        $form = $this->createForm(LanguageType::class, $language);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $language = $form->getData();
+            $this->entityManager->persist($language);
+            $this->entityManager->flush(); 
+
+            return $this->redirectToRoute('language-manager'); 
+        }
+
+        return $this->render('language/update.html.twig', [
+            'form' => $form->createView()
+        ]);
+
     }
 }

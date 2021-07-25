@@ -15,14 +15,14 @@ class LanguageType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nouvelle langue',
+                'label' => 'Langue',
                     'attr' => [
-                        'placeholder' => 'Veuillez renseigner votre nouvelle langue'
+                        'placeholder' => 'Veuillez renseigner votre langue'
                     ]
                 ]
             )
             ->add('submit', SubmitType::class, [
-                'label' => 'Ajouter'
+                'label' => 'Valider'
             ]);
     }
 
