@@ -7,12 +7,17 @@
     <hr>
     <div class="container">
         <div class="row">
+            <div class="col-12">
+                <a href="{{ path('language-add') }}" class="btn btn-success mt-4">Ajouter une nouvelle langue</a>
+            </div>
+        </div>
+        <div class="row">
             {% for language in languages %}
             <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-5">
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">{{ language.name }}</h5>
-                        <a href="{{ path('language-update', {id : language.id}) }}" class="btn btn-primary" style="width:100%">Modifier</a><br>
+                        <a href="{{ path('language-update', {id : language.id}) }}" class="btn btn-primary" style="width:100%">Modifier</a>
                         <a href="{{ path('language-delete', {id : language.id}) }}" class="btn btn-danger mt-1" style="width:100%">Supprimer</a>
                     </div>
                 </div>
