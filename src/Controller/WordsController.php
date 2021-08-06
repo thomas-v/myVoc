@@ -14,4 +14,11 @@ class WordsController extends AbstractController
         return $this->render('words/index.html.twig', [
         ]);
     }
+
+    #[Route('/ajouter-un-mot', name: 'words-add')]
+    public function add(): Response
+    {
+        return $this->render('words/add.html.twig', [
+        ]);
+    }
 }
